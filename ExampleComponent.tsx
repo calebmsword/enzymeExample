@@ -6,8 +6,8 @@ const newClient = (newClientID:string, newClientName:string) => {
 }
 
 const ExampleComponent=( {addNewClient = newClient} ) => {
-    const [newClientID, setNewClientID] = useState("")
-    const [newClientName, setNewClientName] = useState("")
+    const [newClientID, setNewClientID] = useState("initID")
+    const [newClientName, setNewClientName] = useState("initName")
     return (
         <View>
             <Text>Please Enter New Client Information:</Text>

@@ -39,8 +39,8 @@ describe('Can\'t change state in mounted functional component after invoking onT
         //     ); 
     })
 
-    const id = 'yeet';
-    const name = 'skeet';
+    const id = 'id';
+    const name = 'name';
     it('inputing text in boxes and pressing button should have desired side effects', () => {
         id_input.invoke('onChangeText')(id);
         // id_input.prop('onChangeText')(id);
@@ -61,13 +61,27 @@ describe('Can\'t change state in mounted functional component after invoking onT
 
         // wrapper.update(); // redundant, see invoke() in Enzyme Docs
 
-        button.invoke('onPress')();
+        // await button.invoke('onPress')();
         // button.prop('onPress')();
         // button.simulate('press');
 
         // wrapper.update();
 
-        expect(mockAddNewClient).toHaveBeenCalledWith(id, name);
+        wrapper.find(Text).findWhere(n => n.prop('testID') === 'yeetskeet').forEach(n => {console.log(n.text())})
+        wrapper.update();
+
+        button = wrapper
+            .find(Text)
+            .findWhere( node => 
+                   node.text().toLowerCase().includes('add')
+                && node.text().toLowerCase().includes('client')
+                && ( typeof node.prop('onPress') !== 'undefined' )
+            )
+            .last();
+        
+        button.invoke('onPress')();
+
+        expect(mockAddNewClient).toHaveBeenCalledWith(id, name);    
         // expect(mockAddNewClient).toHaveBeenCalled();
     })
 })

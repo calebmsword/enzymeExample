@@ -44,7 +44,6 @@ describe('Can\'t change state in mounted functional component after invoking onT
     it('inputing text in boxes and pressing button should have desired side effects', () => {
         id_input.invoke('onChangeText')(id);
         name_input.invoke('onChangeText')(name);
-        // wrapper.update();
 
         button = wrapper
             .find(Text)

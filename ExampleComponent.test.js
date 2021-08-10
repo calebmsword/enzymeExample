@@ -43,18 +43,18 @@ describe('Can\'t change state in mounted functional component after invoking onT
     const name = 'skeet';
     it('inputing text in boxes and pressing button should have desired side effects', () => {
         id_input.invoke('onChangeText')(id);
-        // await ID_input.prop('onChangeText')(id);
-        // await ID_input.simulate('change', {nativeEvent: {text: id}})
-        // await ID_input.invoke('onChange')( {nativeEvent: {text: id}} );
-        // ID_input.simulate('changeText', {target: {value: id}})
-        // ID_input.simulate('changeText', id)
+        // id_input.prop('onChangeText')(id);
+        // id_input.simulate('change', {nativeEvent: {text: id}})
+        // id_input.invoke('onChange')( {nativeEvent: {text: id}} );
+        // id_input.simulate('changeText', {target: {value: id}})
+        // id_input.simulate('changeText', id)
 
         // wrapper.update(); // redundant, see invoke() in Enzyme Docs
         // https://enzymejs.github.io/enzyme/docs/api/ReactWrapper/invoke.html
 
         name_input.invoke('onChangeText')(name);
-        // await name_input.prop('onChangeText')(name);
-        // await name_input.invoke('onChange')( {nativeEvent: {text: name}} );
+        // name_input.prop('onChangeText')(name);
+        // name_input.invoke('onChange')( {nativeEvent: {text: name}} );
         // name_input.simulate('change', {nativeEvent: {text: name}})
         // name_input.simulate('changeText', {target: {value: name}})
         // name_input.simulate('changeText', name)
@@ -64,7 +64,7 @@ describe('Can\'t change state in mounted functional component after invoking onT
         button.invoke('onPress')();
         // button.prop('onPress')();
         // button.simulate('press');
-        
+
         // wrapper.update();
 
         expect(mockAddNewClient).toHaveBeenCalledWith(id, name);

@@ -17,13 +17,13 @@ describe('Can\'t change state in mounted functional component after invoking onT
             .findWhere( node => 
                 node.prop('placeholder').toLowerCase().includes('id')
             )
-            .first();
+            .last();
         name_input = wrapper
             .find(TextInput)
             .findWhere( node => 
                 node.prop('placeholder').toLowerCase().includes('name')
             )
-            .first();
+            .last();
         button = wrapper
             .find(Text)
             .findWhere( node => 
@@ -31,7 +31,7 @@ describe('Can\'t change state in mounted functional component after invoking onT
                 && node.text().toLowerCase().includes('client')
                 && ( typeof node.prop('onPress') !== 'undefined' )
             )
-            .first();
+            .last();
         // the above doesn't work with shallow, try below if you want to shallow
         // button = wrapper
         //     .findWhere(node => 
